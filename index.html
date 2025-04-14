@@ -1,0 +1,207 @@
+<!-- Made By AtlastheGreat -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Moon Auth</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Ubuntu:wght@300;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #2a0a0a, #1a1a1a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Ubuntu', sans-serif;
+            overflow: hidden;
+            animation: bg-pulse 8s infinite;
+        }
+
+        @keyframes bg-pulse {
+            0%, 100% { background-size: 100% 100%; }
+            50% { background-size: 150% 150%; }
+        }
+
+        .form-container {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .form-box {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            padding: 40px;
+            background: linear-gradient(45deg, #ff1a1a25, #00000050);
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .login { left: 0; }
+        .signup { right: -50%; }
+
+        .form-container.active .login { transform: translateX(-100%); }
+        .form-container.active .signup { transform: translateX(-100%); }
+
+        h1 {
+            color: #ff4444;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #ff000070;
+        }
+
+        .input-group {
+            margin: 25px 0;
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 2px solid #ff4444;
+            outline: none;
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-bottom: 2px solid #ff0000;
+            box-shadow: 0 2px 0 0 #ff000050;
+        }
+
+        label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            color: #ff8888;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        input:focus ~ label,
+        input:valid ~ label {
+            top: -20px;
+            font-size: 12px;
+            color: #ff4444;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0000, #800000);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff000070;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .toggle-container {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10;
+        }
+
+        .form-container.active .toggle-container {
+            right: calc(100% - 285px);
+        }
+
+        .toggle-btn {
+            background: none;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .toggle-btn:hover {
+            background: #ff4444;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="container">
+        <div class="form-box login">
+            <h1>BLOOD MOON<br>LOGIN</h1>
+            <form>
+                <div class="input-group">
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit">Enter the Void</button>
+            </form>
+        </div>
+        
+        <div class="form-box signup">
+            <h1>BLOOD MOON<br>SIGNUP</h1>
+            <form>
+                <div class="input-group">
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit">Embrace Darkness</button>
+            </form>
+        </div>
+
+        <div class="toggle-container">
+            <button class="toggle-btn" onclick="toggleForm('login')">LOGIN</button>
+            <button class="toggle-btn" onclick="toggleForm('signup')">SIGNUP</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(type) {
+            const container = document.getElementById('container');
+            container.classList.toggle('active', type === 'signup');
+        }
+    </script>
+</body>
+</html>
